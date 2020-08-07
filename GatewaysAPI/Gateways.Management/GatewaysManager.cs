@@ -49,5 +49,37 @@ namespace Gateways.Management
         {
             return GatewayDataAcces.DeleteGatewayBySerialNumber(serialNumber);
         }
+
+        public async Task<int> AddDeviceToGateway(string gatewaySerialNumber, Device newDevice)
+        {
+            Gateway targetGateway = await GetGatewayBySerialNumber(gatewaySerialNumber);
+            
+            if (targetGateway.Devices?.Count == 10) 
+            {
+                throw new MaximumDevicesExceededException();
+            }
+
+            newDevice.DateCreated = DateTime.UtcNow;
+
+            return await GatewayDataAcces.AddDeviceToGateway(gatewaySerialNumber, newDevice);
+        }
+
+        public async Task RemoveDeviceFromGateway(string gatewaySerialNumber, int deviceId)
+        {
+            Gateway targetGateway = await GetGatewayBySerialNumber(gatewaySerialNumber);
+
+            await GatewayDataAcces.RemoveDeviceFromGateway(gatewaySerialNumber, deviceId);
+        }
+
+        public async Task<Gateway> GetGatewayBySerialNumber(string gatewaySerialNumber) 
+        {
+            Gateway targetGateway = await GatewayDataAcces.GetGatewayBySerialNumber(gatewaySerialNumber);
+            if (targetGateway == null)
+            {
+                throw new GatewayDoesNotExistException();
+            }
+
+            return targetGateway;
+        }
     }
 }

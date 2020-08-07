@@ -11,5 +11,7 @@ namespace Gateways.Interfaces
         Task CreateGateway(Gateway newGateway);
         Task DeleteGatewayBySerialNumber(string serialNumber);
         Task<Gateway[]> GetAllGateways();
+        Task<int> AddDeviceToGateway(string gatewaySerialNumber,Device newDevice);
+        Task RemoveDeviceFromGateway(string gatewaySerialNumber,int deviceId);
     }
 }

@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Gateways.DataModel;
+using Gateways.Interfaces;
+using Gateways.Management;
+using Gateways.Management.Exceptions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace GatewaysAPI.Controllers
+{
+    [ApiController]
+    public class DevicesController : ControllerBase
+    {
+        IGatewaysManager GatewaysManager;
+
+        public DevicesController()
+        {
+            GatewaysManager = new GatewaysManager();
+        }
+
+        [HttpPost("api/gateways/{gatewaySerialNumber}/devices")]
+        public async Task<ActionResult<int>> AddDeviceToGateway(string gatewaySerialNumber, [FromBody] Device newDevice)
+        {
+            try
+            {
+                return await GatewaysManager.AddDeviceToGateway(gatewaySerialNumber, newDevice);
+            }
+            catch (MaximumDevicesExceededException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Maximum device number in a gateway exceeded!");
+            }
+            catch (GatewayDoesNotExistException) 
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Gateway does not exist!");
+            }
+        }
+
+        [HttpDelete("api/gateways/{gatewaySerialNumber}/devices/{deviceId}")]
+        public async Task<ActionResult> RemoveDeviceFromGateway(string gatewaySerialNumber, int deviceId)
+        {
+            try
+            {
+                await GatewaysManager.RemoveDeviceFromGateway(gatewaySerialNumber, deviceId);
+                return Ok();
+            }
+            catch (GatewayDoesNotExistException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Gateway does not exist!");
+            }
+        }
+    }
+}

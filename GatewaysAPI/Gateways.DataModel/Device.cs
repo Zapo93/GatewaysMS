@@ -9,6 +9,16 @@ namespace Gateways.DataModel
         public int UniqueID;
         public string Vendor;
         public DateTime DateCreated;
-        public string Status;
+        private string status;
+        public string Status 
+        {
+            get { return status; }
+            set { 
+                    if (value == "Online" || value == "Offline") 
+                    {
+                        status = value;
+                    } 
+            } 
+        }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GatewaysAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/gateways")]
     [ApiController]
     public class GatewaysController : ControllerBase
     {
