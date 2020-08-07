@@ -1,0 +1,11 @@
+/GatewaysAPI/GatewaysAPI/bin
+/GatewaysAPI/GatewaysAPI/obj
+/GatewaysAPI/Gateways.Management/bin
+/GatewaysAPI/Gateways.Management/obj
+/GatewaysAPI/Gateways.Interfaces/bin
+/GatewaysAPI/Gateways.Interfaces/obj
+/GatewaysAPI/Gateways.DataModel/obj
+/GatewaysAPI/Gateways.DataModel/bin
+/GatewaysAPI/Gateways.DataAccess/obj
+/GatewaysAPI/Gateways.DataAccess/bin
+/GatewaysAPI/.vs/Gateways/v16/.suo
