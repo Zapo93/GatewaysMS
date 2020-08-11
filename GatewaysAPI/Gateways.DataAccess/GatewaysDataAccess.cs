@@ -79,5 +79,28 @@ namespace Gateways.DataAccess
 
             return Task.CompletedTask;
         }
+
+        public Task SaveGatewayStatus(string gatewaySerialNumber, Gateway newStatus)
+        {
+            Gateway targetGateway = GatewaysDictionary[gatewaySerialNumber];
+
+            try
+            {
+                foreach (Device newDeviceStatus in newStatus.Devices)
+                {
+                    foreach (Device originalDevice in targetGateway.Devices)
+                    {
+                        if (originalDevice.UniqueID == newDeviceStatus.UniqueID)
+                        {
+                            originalDevice.Status = newDeviceStatus.Status;
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception){}
+
+            return Task.CompletedTask;
+        }
     }
 }

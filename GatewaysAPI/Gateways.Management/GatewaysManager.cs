@@ -71,6 +71,17 @@ namespace Gateways.Management
             await GatewayDataAcces.RemoveDeviceFromGateway(gatewaySerialNumber, deviceId);
         }
 
+        public Task<Gateway> GetGatewayStatus(string gatewaySerialNumber)
+        {
+            return GetGatewayBySerialNumber(gatewaySerialNumber);
+        }
+
+        public async Task UpdateGatewayStatus(string gatewaySerialNumber, Gateway newStatus)
+        {
+            await GetGatewayBySerialNumber(gatewaySerialNumber);
+            await GatewayDataAcces.SaveGatewayStatus(gatewaySerialNumber, newStatus);
+        }
+
         public async Task<Gateway> GetGatewayBySerialNumber(string gatewaySerialNumber) 
         {
             Gateway targetGateway = await GatewayDataAcces.GetGatewayBySerialNumber(gatewaySerialNumber);
