@@ -19,9 +19,9 @@ namespace GatewaysAPI.Controllers
     {
         IGatewaysManager GatewaysManager;
 
-        public StatusController() 
+        public StatusController(IGatewaysManager gatewaysManager) 
         {
-            GatewaysManager = new GatewaysManager();
+            GatewaysManager = gatewaysManager;
         }
 
         [HttpGet]

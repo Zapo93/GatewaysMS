@@ -11,5 +11,10 @@ namespace Gateways.DataModel
         public string Name;
         public string IP;
         public List<Device> Devices;
+
+        public Gateway() 
+        {
+            Devices = new List<Device>();
+        }
     }
 }

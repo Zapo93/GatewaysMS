@@ -14,9 +14,9 @@ namespace Gateways.Management
     {
         IGatewaysDataAccess GatewayDataAcces;
 
-        public GatewaysManager() 
+        public GatewaysManager(IGatewaysDataAccess gatewaysDataAccess) 
         {
-            GatewayDataAcces = new GatewaysDataAccess();
+            GatewayDataAcces = gatewaysDataAccess;
         }
         
         public async Task CreateGateway(Gateway newGateway)

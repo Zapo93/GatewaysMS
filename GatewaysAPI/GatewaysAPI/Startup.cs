@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Gateways.DataAccess;
+using Gateways.Interfaces;
+using Gateways.Management;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +30,9 @@ namespace GatewaysAPI
         {
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+            services.AddTransient<IGatewaysDataAccess, GatewaysDataAccess>();
+            services.AddTransient<IGatewaysManager,GatewaysManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

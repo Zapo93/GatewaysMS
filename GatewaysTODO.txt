@@ -13,10 +13,10 @@
 	
 	!Generally, in practice, always use PUT for UPDATE operations.//Always use POST for CREATE operations.
 	
-- Clear references to concrete classes in the managers and data access - use only interfaces.
+- Clear references to concrete classes in the managers and data access - use only interfaces. --------X
 
 - Make IPv4 validator class with static methods?
 
-- Make Gateway.Devices return [] instead of null
+- Make Gateway.Devices return [] instead of null ------X
 
 - Should there be a message for incorrect devices status input when updating statuses?
