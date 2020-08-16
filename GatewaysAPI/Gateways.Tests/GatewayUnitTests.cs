@@ -11,7 +11,7 @@ namespace Gateways.Tests
     public class GatewayUnitTests
     {
         [TestMethod]
-        public void Gateway_GetDeviceByUniqueId_GetDevice() 
+        public void GetDeviceByUniqueId_DeviceExists_Success() 
         {
             Gateway gateway = MockGateway.Create();
             Device device = MockDevice.Create();
@@ -25,7 +25,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public void Gateway_GetDeviceByUniqueId_NoSuchDevice()
+        public void GetDeviceByUniqueId_NoSuchDevice_ReturnsNull()
         {
             Gateway gateway = MockGateway.Create();
 

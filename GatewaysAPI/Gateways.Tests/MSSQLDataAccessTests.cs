@@ -18,7 +18,7 @@ namespace Gateways.Tests
         private readonly string DBConnectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
 
         [TestMethod]
-        public async Task CreateAndDeleteGateway_NewSerialNumber_ReadFromTheDBSuccessfully() 
+        public async Task CreateAndDeleteGateway_NewSerialNumber_Success() 
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
@@ -35,7 +35,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task CreateAndDeleteGateway_ExistingSerialNumber_ThrowsError()
+        public async Task CreateAndDeleteGateway_ExistingSerialNumber_ThrowsGatewayAlreadyExistsError()
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
@@ -59,7 +59,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task CreateAndDeleteGateway_NewSerialNumbers_GetAllGatewaysSucccessfully()
+        public async Task GetAllGateways_NewGateway_GatewayIsInTheList()
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
@@ -87,7 +87,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task CreateAndDeleteDevice_NewDevice_ReadFromDBSuccessfully() 
+        public async Task AddAndRemoveDeviceFromGateway_NewDevice_ReadFromDBSuccessfully() 
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
@@ -117,7 +117,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task UpdateGatewayStatus_NewDevice_ReadFromDBSuccessfully()
+        public async Task UpdateGatewayStatus_InitialDeviceStatusIsChanged_ReadFromDBSuccessfully()
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();

@@ -47,7 +47,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task AddGatewayWithDevice_NewGateway_SuccessfullRead()
+        public async Task CreateGateway_GatewayWithDevice_SuccessfullRead()
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
@@ -77,7 +77,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task Add10DevicesToGateway_CreateGateway_Success()
+        public async Task CreateGateway_GatewayWith10Devices_Success()
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
@@ -101,7 +101,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task AddMoreThan10DevicesToGateway_CreateGateway_CorrespondingErrorThrown()
+        public async Task CreateGateway_GatewayWithMoreThan10Devices_MaxDevicesExceededErrorThrown()
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
@@ -128,7 +128,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task Add10DevicesToGateway_AddDevice_Success()
+        public async Task AddDeviceToGateway_Add10Devices_Success()
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
@@ -152,7 +152,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task AddMoreThan10DevicesToGateway_AddDevice_CorrespondingErrorThrown()
+        public async Task AddDevice_AddMoreThan10Devices_MaximumDevicesExceededErrorThrown()
         {
             IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
@@ -181,7 +181,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task CreateGatewayWithValidIP_CreateGateway_Success()
+        public async Task CreateGateway_ValidIPProvided_Success()
         {
             IGatewaysDataAccess dataAccess = new GatewaysDataAccess();
             IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
@@ -198,7 +198,7 @@ namespace Gateways.Tests
         }
 
         [TestMethod]
-        public async Task CreateGatewayWithInvalidIP_CreateGateway_ThrowsError()
+        public async Task CreateGateway_InvalidIP_ThrowsInvalidIPv4Error()
         {
             IGatewaysDataAccess dataAccess = new GatewaysDataAccess();
             IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
