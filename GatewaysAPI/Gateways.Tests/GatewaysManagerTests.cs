@@ -44,5 +44,37 @@ namespace Gateways.Tests
             Assert.AreEqual(newGateway.IP, gatewayFromDB.IP);
             Assert.AreEqual(newGateway.Name, gatewayFromDB.Name);
         }
+
+        [TestMethod]
+        public async Task AddGatewayWithDevice_NewGateway_SuccessfullRead()
+        {
+            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
+            IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
+
+            Gateway newGateway = MockGateway.Create();
+            Device newDevice = MockDevice.Create();
+
+            newGateway.Devices.Add(newDevice);
+            await gatewaysManager.CreateGateway(newGateway);
+            var gatewayFromDB = await gatewaysManager.GetGatewayStatus(newGateway.SerialNumber);
+
+            await gatewaysManager.DeleteGatewayBySerialNumber(newGateway.SerialNumber);
+
+            await Assert.ThrowsExceptionAsync<GatewayDoesNotExistException>(async () =>
+            {
+                await gatewaysManager.GetGatewayStatus(newGateway.SerialNumber);
+            });
+
+            Assert.AreEqual(newGateway.SerialNumber, gatewayFromDB.SerialNumber);
+            Assert.AreEqual(newGateway.IP, gatewayFromDB.IP);
+            Assert.AreEqual(newGateway.Name, gatewayFromDB.Name);
+
+            Assert.AreEqual(gatewayFromDB.Devices.Count, 1);
+            Assert.AreEqual(newDevice.Vendor, gatewayFromDB.Devices[0].Vendor);
+            Assert.AreEqual(newDevice.DateCreated.ToString(), gatewayFromDB.Devices[0].DateCreated.ToString());
+            Assert.AreEqual(newDevice.Status, gatewayFromDB.Devices[0].Status);
+        }
+
+
     }
 }

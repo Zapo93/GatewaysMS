@@ -24,6 +24,11 @@ namespace Gateways.Management
             ValidateIPv4String(newGateway.IP);
 
             await GatewayDataAcces.AddGateway(newGateway);
+
+            foreach (Device device in newGateway.Devices) 
+            {
+                await AddDeviceToGateway(newGateway.SerialNumber, device);
+            }
         }
 
         private void ValidateIPv4String(string ipv4)
