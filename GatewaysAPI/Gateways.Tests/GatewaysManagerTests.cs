@@ -180,6 +180,60 @@ namespace Gateways.Tests
             });
         }
 
+        [TestMethod]
+        public async Task CreateGatewayWithValidIP_CreateGateway_Success()
+        {
+            IGatewaysDataAccess dataAccess = new GatewaysDataAccess();
+            IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
 
+            Gateway newGateway = MockGateway.Create();
+            newGateway.IP = "192.22.21.3";
+
+            await gatewaysManager.CreateGateway(newGateway);
+            await gatewaysManager.DeleteGatewayBySerialNumber(newGateway.SerialNumber);
+            await Assert.ThrowsExceptionAsync<GatewayDoesNotExistException>(async () =>
+            {
+                await gatewaysManager.GetGatewayStatus(newGateway.SerialNumber);
+            });
+        }
+
+        [TestMethod]
+        public async Task CreateGatewayWithInvalidIP_CreateGateway_ThrowsError()
+        {
+            IGatewaysDataAccess dataAccess = new GatewaysDataAccess();
+            IGatewaysManager gatewaysManager = new GatewaysManager(dataAccess);
+
+            Gateway newGateway = MockGateway.Create();
+
+            newGateway.IP = "asdafsad";
+            await Assert.ThrowsExceptionAsync<InvalidIPv4Exception>(async () =>
+            {
+                await gatewaysManager.CreateGateway(newGateway);
+            });
+
+            newGateway.IP = "129.512.32.10";
+            await Assert.ThrowsExceptionAsync<InvalidIPv4Exception>(async () =>
+            {
+                await gatewaysManager.CreateGateway(newGateway);
+            });
+
+            newGateway.IP = "129.10.asdfsa.10";
+            await Assert.ThrowsExceptionAsync<InvalidIPv4Exception>(async () =>
+            {
+                await gatewaysManager.CreateGateway(newGateway);
+            });
+
+            newGateway.IP = "1";
+            await Assert.ThrowsExceptionAsync<InvalidIPv4Exception>(async () =>
+            {
+                await gatewaysManager.CreateGateway(newGateway);
+            });
+
+            newGateway.IP = "1.2";
+            await Assert.ThrowsExceptionAsync<InvalidIPv4Exception>(async () =>
+            {
+                await gatewaysManager.CreateGateway(newGateway);
+            });
+        }
     }
 }

@@ -33,8 +33,10 @@ namespace Gateways.Management
 
         private void ValidateIPv4String(string ipv4)
         {
+            var parts = ipv4.Split('.');
+
             IPAddress address;
-            if (!IPAddress.TryParse(ipv4, out address) || address.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
+            if (parts.Length != 4 || !IPAddress.TryParse(ipv4, out address) || address.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork)
             {
                 throw new InvalidIPv4Exception();
             }

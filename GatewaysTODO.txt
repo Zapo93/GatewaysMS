@@ -29,7 +29,8 @@ The controllers should not be dependant of the implementation only the intreface
 
 - Add the ability to add devices to gateway during creation. ---------X
 
-- Make IPv4 validator class with static methods?
+- Make IPv4 validator class with static methods? ---------X
+	= Added tests and improved the method. Could be refactored later if needed.
 
 - Should there be a message for incorrect devices status input when updating statuses?
 
