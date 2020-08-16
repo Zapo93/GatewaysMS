@@ -33,3 +33,5 @@ If you try to add a gateway with a serial number which already exists the stored
 The controllers should not be dependant of the implementation only the intrefaces.
 
 - Make the connection string a property of the DataAccess class instead of local var in each method.
+
+- Add the ability to add devices to gateway during creation.

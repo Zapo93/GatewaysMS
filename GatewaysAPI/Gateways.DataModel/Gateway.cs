@@ -16,5 +16,21 @@ namespace Gateways.DataModel
         {
             Devices = new List<Device>();
         }
+
+        public Device GetDeviceByUniqueId(int uniqueId) 
+        {
+            Device resultDevice = null;
+
+            foreach (Device device in Devices) 
+            {
+                if (device.UniqueID == uniqueId) 
+                {
+                    resultDevice = device;
+                    break;
+                }
+            }
+
+            return resultDevice;
+        }
     }
 }

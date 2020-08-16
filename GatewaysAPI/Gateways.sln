@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewaysAPI", "GatewaysAPI\GatewaysAPI.csproj", "{0BD6552F-1405-4982-B38E-29637FD19CAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatewaysAPI", "GatewaysAPI\GatewaysAPI.csproj", "{0BD6552F-1405-4982-B38E-29637FD19CAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.DataModel", "Gateways.DataModel\Gateways.DataModel.csproj", "{11FF6039-D99C-41F6-BFE5-501463B8432F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.DataModel", "Gateways.DataModel\Gateways.DataModel.csproj", "{11FF6039-D99C-41F6-BFE5-501463B8432F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.Interfaces", "Gateways.Interfaces\Gateways.Interfaces.csproj", "{0E182722-8895-49C5-9034-BABCD3B4E0B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.Interfaces", "Gateways.Interfaces\Gateways.Interfaces.csproj", "{0E182722-8895-49C5-9034-BABCD3B4E0B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.Management", "Gateways.Management\Gateways.Management.csproj", "{F03FD86F-7E07-4917-9A70-F91478506C9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.Management", "Gateways.Management\Gateways.Management.csproj", "{F03FD86F-7E07-4917-9A70-F91478506C9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.DataAccess", "Gateways.DataAccess\Gateways.DataAccess.csproj", "{FE93D0FC-24D2-46D0-9F93-554FAF7CC371}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateways.DataAccess", "Gateways.DataAccess\Gateways.DataAccess.csproj", "{FE93D0FC-24D2-46D0-9F93-554FAF7CC371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateways.Tests", "Gateways.Tests\Gateways.Tests.csproj", "{9E8210E8-B34F-4956-B7F2-73CF23CBA1D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{FE93D0FC-24D2-46D0-9F93-554FAF7CC371}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE93D0FC-24D2-46D0-9F93-554FAF7CC371}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE93D0FC-24D2-46D0-9F93-554FAF7CC371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E8210E8-B34F-4956-B7F2-73CF23CBA1D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E8210E8-B34F-4956-B7F2-73CF23CBA1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E8210E8-B34F-4956-B7F2-73CF23CBA1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E8210E8-B34F-4956-B7F2-73CF23CBA1D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,3 +9,5 @@
 /GatewaysAPI/Gateways.DataAccess/obj
 /GatewaysAPI/Gateways.DataAccess/bin
 /GatewaysAPI/.vs/Gateways/v16/.suo
+/GatewaysAPI/Gateways.Tests/bin
+/GatewaysAPI/Gateways.Tests/obj
