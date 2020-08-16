@@ -21,6 +21,8 @@
 
 - Make Gateway.Devices return [] instead of null ------X
 
+- Make the connection string a property of the DataAccess class instead of local var in each method. ---------X
+
 - Make IPv4 validator class with static methods?
 
 - Should there be a message for incorrect devices status input when updating statuses?
@@ -31,7 +33,5 @@
 - Use the gateway table uniqueness constraint to check if a gateway already exists during creation of new gateway to avoid calling 2 stored procedures. 
 If you try to add a gateway with a serial number which already exists the stored procedure fails with an error.
 The controllers should not be dependant of the implementation only the intrefaces.
-
-- Make the connection string a property of the DataAccess class instead of local var in each method.
 
 - Add the ability to add devices to gateway during creation.

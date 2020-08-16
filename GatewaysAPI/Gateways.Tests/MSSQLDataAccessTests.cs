@@ -14,10 +14,12 @@ namespace Gateways.Tests
     [TestClass]
     public class MSSQLDataAccessTests
     {
+        private readonly string DBConnectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
+
         [TestMethod]
         public async Task CreateAndDeleteGateway_NewSerialNumber_ReadFromTheDBSuccessfully() 
         {
-            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess();
+            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
 
             await dataAccess.AddGateway(newGateway);
@@ -34,7 +36,7 @@ namespace Gateways.Tests
         [TestMethod]
         public async Task CreateAndDeleteGateway_ExistingSerialNumber_ThrowsError()
         {
-            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess();
+            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
 
             await dataAccess.AddGateway(newGateway);
@@ -58,7 +60,7 @@ namespace Gateways.Tests
         [TestMethod]
         public async Task CreateAndDeleteGateway_NewSerialNumbers_GetAllGatewaysSucccessfully()
         {
-            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess();
+            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
             Gateway gatewayFromDB = null;
 
@@ -86,7 +88,7 @@ namespace Gateways.Tests
         [TestMethod]
         public async Task CreateAndDeleteDevice_NewDevice_ReadFromDBSuccessfully() 
         {
-            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess();
+            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
             Device newDevice = MockDevice.Create();
             Device deviceFromDB = null;
@@ -116,7 +118,7 @@ namespace Gateways.Tests
         [TestMethod]
         public async Task UpdateGatewayStatus_NewDevice_ReadFromDBSuccessfully()
         {
-            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess();
+            IGatewaysDataAccess dataAccess = new GatewaysMSSQLDataAccess(DBConnectionString);
             Gateway newGateway = MockGateway.Create();
             Device newDevice = MockDevice.Create();
             Device deviceFromDB = null;

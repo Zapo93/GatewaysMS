@@ -18,6 +18,8 @@ namespace GatewaysAPI
 {
     public class Startup
     {
+        private readonly string DBConnectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,7 +33,7 @@ namespace GatewaysAPI
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddTransient<IGatewaysDataAccess, GatewaysMSSQLDataAccess>();
+            services.AddTransient<IGatewaysDataAccess>(serviceProvider => new GatewaysMSSQLDataAccess(DBConnectionString));
             services.AddTransient<IGatewaysManager,GatewaysManager>();
         }
 

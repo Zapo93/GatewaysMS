@@ -14,11 +14,16 @@ namespace Gateways.DataAccess
 {
     public class GatewaysMSSQLDataAccess : IGatewaysDataAccess
     {
+        private readonly string DBConnectionString;
+
+        public GatewaysMSSQLDataAccess(string dbConnectionString) 
+        {
+            DBConnectionString = dbConnectionString;
+        }
+
         public async Task AddGateway(Gateway newGateway)
         {
-            string connectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(DBConnectionString))
             {
                 SqlCommand command = CreateStoredProcedureCommand("add_gateway", connection);
 
@@ -44,9 +49,7 @@ namespace Gateways.DataAccess
 
         public async Task DeleteGatewayBySerialNumber(string serialNumber)
         {
-            string connectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(DBConnectionString))
             {
                 SqlCommand command = CreateStoredProcedureCommand("delete_gateway", connection);
 
@@ -68,9 +71,7 @@ namespace Gateways.DataAccess
         {
             int deviceId = 0;
 
-            string connectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(DBConnectionString))
             {
                 SqlCommand command = CreateStoredProcedureCommand("add_device", connection);
 
@@ -104,9 +105,7 @@ namespace Gateways.DataAccess
 
         public async Task RemoveDeviceFromGateway(string gatewaySerialNumber, int deviceId)
         {
-            string connectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(DBConnectionString))
             {
                 SqlCommand command = CreateStoredProcedureCommand("delete_device", connection);
 
@@ -127,9 +126,7 @@ namespace Gateways.DataAccess
 
         public async Task SaveGatewayStatus(string gatewaySerialNumber, Gateway newStatus)
         {
-            string connectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(DBConnectionString))
             {
                 try
                 {
@@ -158,9 +155,8 @@ namespace Gateways.DataAccess
         public async Task<Gateway[]> GetAllGateways()
         {
             Dictionary<string,Gateway> gatewaysDictionary = new Dictionary<string, Gateway>();
-            string connectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(DBConnectionString))
             {
                 SqlCommand command = CreateStoredProcedureCommand("get_all_gateways", connection);
 
@@ -188,9 +184,8 @@ namespace Gateways.DataAccess
         public async Task<Gateway> GetGatewayBySerialNumber(string serialNumber)
         {
             Dictionary<string, Gateway> gatewaysDictionary = new Dictionary<string, Gateway>();
-            string connectionString = "Server=localhost;Database=ms_gateways;Trusted_Connection=True;";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(DBConnectionString))
             {
                 SqlCommand command = CreateStoredProcedureCommand("get_gateway", connection);
 
