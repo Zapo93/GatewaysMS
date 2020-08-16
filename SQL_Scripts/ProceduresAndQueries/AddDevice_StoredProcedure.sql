@@ -6,7 +6,7 @@ CREATE PROCEDURE dbo.add_device
 	@Vendor nvarchar(50),
 	@DateCreated datetime,
 	@Status nvarchar(50),
-	@DeviceId int OUTPUT
+	@DeviceId bigint OUTPUT
 AS
 BEGIN
 	DECLARE @GatewayId int;

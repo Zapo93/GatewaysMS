@@ -12,12 +12,12 @@ BEGIN
 					FROM gateway
 					WHERE serial_number = @SerialNumber);
 
-	SELECT *
+	SELECT serial_number, name, ipv4
 	FROM gateway
 	WHERE id = @GatewayID;
 
-	SELECT device.id, gateway_id,vendor, date_created, status
-	FROM device RIGHT JOIN dbo.device_status ON device_status.device_id = device.id
+	SELECT device.id, vendor, date_created, status, gateway.serial_number
+	FROM device LEFT JOIN dbo.device_status ON device_status.device_id = device.id INNER JOIN dbo.gateway ON dbo.device.gateway_id = dbo.gateway.id
 	WHERE device.gateway_id = @GatewayID;
 END
 GO

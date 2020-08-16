@@ -9,7 +9,7 @@ INSERT INTO dbo.gateway (serial_number, name, ipv4) VALUES ('126454359723', 'Nik
 INSERT INTO dbo.device (id, vendor, date_created, gateway_id) VALUES(1, 'SONY', GETDATE(), 10); --DATETIMEFROMPARTS(1,2,3,4,5,6,7)
 INSERT INTO dbo.device (id, vendor, date_created, gateway_id) VALUES(2, 'PHILIPS', GETDATE(), 10);
 INSERT INTO dbo.device (id, vendor, date_created, gateway_id) VALUES(3, 'LG', GETDATE(), 10);
-INSERT INTO dbo.device (id, vendor, date_created, gateway_id) VALUES(4, 'SONY', GETDATE(), 10);
+INSERT INTO dbo.device (id, vendor, date_created, gateway_id) VALUES(5, 'SONY', GETDATE(), 2);
 
 SELECT * FROM dbo.gateway;
 
@@ -28,7 +28,7 @@ GO
 
 DECLARE @DeviceId int, @DeviceCreated datetime;
 SET @DeviceCreated = GETDATE();
-EXEC dbo.add_device 'fasdf9723', 'Cloud', @DeviceCreated, 'Online', @DeviceId OUT;
+EXEC dbo.add_device '12324289723', 'SAMSUNG', @DeviceCreated, 'Online', @DeviceId OUT;
 PRINT 'DeviceId ' + convert(varchar(10),@DeviceId);  
 GO
 
@@ -44,8 +44,8 @@ GO
 EXEC dbo.get_all_gateways;
 GO
 
-EXEC dbo.get_gateway '12324289723';
+EXEC dbo.get_gateway 'fasdf9723';
 GO
 
-EXEC dbo.set_device_status 6, 'Offline';
+EXEC dbo.set_device_status 3, 'Offline';
 GO

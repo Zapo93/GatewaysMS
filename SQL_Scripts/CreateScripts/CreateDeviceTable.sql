@@ -1,13 +1,6 @@
 USE [ms_gateways]
 GO
 
-/****** Object:  Table [dbo].[device]    Script Date: 8/14/2020 18:20:32 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
 CREATE TABLE [dbo].[device](
 	[id] [bigint] NOT NULL,
 	[vendor] [nvarchar](50) NOT NULL,

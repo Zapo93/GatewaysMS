@@ -31,7 +31,7 @@ namespace GatewaysAPI
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
-            services.AddTransient<IGatewaysDataAccess, GatewaysDataAccess>();
+            services.AddTransient<IGatewaysDataAccess, GatewaysMSSQLDataAccess>();
             services.AddTransient<IGatewaysManager,GatewaysManager>();
         }
 
