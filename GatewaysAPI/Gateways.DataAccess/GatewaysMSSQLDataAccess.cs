@@ -1,6 +1,7 @@
 ﻿using Gateways.DataAccess.DataModel;
 using Gateways.DataModel;
 using Gateways.Interfaces;
+using Gateways.Interfaces.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,7 +41,7 @@ namespace Gateways.DataAccess
                 {
                     if (error.Number == 2601) 
                     {
-                        throw new Exception("Gateway already exists!");
+                        throw new GatewayAlreadyExistsException();
                     }
                     throw;
                 }

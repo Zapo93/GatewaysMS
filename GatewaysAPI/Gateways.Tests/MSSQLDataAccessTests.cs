@@ -1,6 +1,7 @@
 ﻿using Gateways.DataAccess;
 using Gateways.DataModel;
 using Gateways.Interfaces;
+using Gateways.Interfaces.Exceptions;
 using Gateways.Tests.Mock;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -42,7 +43,7 @@ namespace Gateways.Tests
             await dataAccess.AddGateway(newGateway);
             var gatewayFromDB = await dataAccess.GetGatewayBySerialNumber(newGateway.SerialNumber);
 
-            await Assert.ThrowsExceptionAsync<Exception>(async ()=> 
+            await Assert.ThrowsExceptionAsync<GatewayAlreadyExistsException>(async ()=> 
             {
                     await dataAccess.AddGateway(newGateway);
             });

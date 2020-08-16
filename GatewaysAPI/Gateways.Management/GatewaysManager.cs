@@ -21,11 +21,6 @@ namespace Gateways.Management
         
         public async Task CreateGateway(Gateway newGateway)
         {
-            if (await GatewayDataAcces.GetGatewayBySerialNumber(newGateway.SerialNumber) != null) 
-            {
-                throw new GatewayAlreadyExistsException();
-            }
-
             ValidateIPv4String(newGateway.IP);
 
             await GatewayDataAcces.AddGateway(newGateway);

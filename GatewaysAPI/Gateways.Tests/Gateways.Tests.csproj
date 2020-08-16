@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Gateways.DataAccess\Gateways.DataAccess.csproj" />
+    <ProjectReference Include="..\Gateways.Management\Gateways.Management.csproj" />
   </ItemGroup>
 
 </Project>

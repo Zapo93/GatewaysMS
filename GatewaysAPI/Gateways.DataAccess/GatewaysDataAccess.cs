@@ -1,5 +1,6 @@
 ﻿using Gateways.DataModel;
 using Gateways.Interfaces;
+using Gateways.Interfaces.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,10 @@ namespace Gateways.DataAccess
 
         public Task AddGateway(Gateway newGateway)
         {
+            if (GatewaysDictionary.ContainsKey(newGateway.SerialNumber))
+            {
+                throw new GatewayAlreadyExistsException();
+            }
             GatewaysDictionary[newGateway.SerialNumber] = newGateway;
             return Task.CompletedTask;
         }
