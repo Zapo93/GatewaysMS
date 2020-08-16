@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Gateways.Management
+namespace Gateways.Interfaces.Exceptions
 {
     public class GatewayAlreadyExistsException: Exception
     {

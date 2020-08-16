@@ -1,7 +1,7 @@
 ﻿using Gateways.DataAccess;
 using Gateways.DataModel;
 using Gateways.Interfaces;
-using Gateways.Management.Exceptions;
+using Gateways.Interfaces.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Net;

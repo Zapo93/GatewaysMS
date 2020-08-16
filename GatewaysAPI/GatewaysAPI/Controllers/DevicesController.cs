@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Gateways.DataModel;
 using Gateways.Interfaces;
-using Gateways.Management;
-using Gateways.Management.Exceptions;
+using Gateways.Interfaces.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

@@ -15,9 +15,13 @@
 	
 - Clear references to concrete classes in the managers and data access - use only interfaces. --------X
 
-- Make IPv4 validator class with static methods?
+- Move the Exceptions classes to the interfaces project. The exceptions should be independent from the implementation. ------X
+
+- Remove dependancies to Gateways.Management and other implementations of interfaces from the API controllers that use the implementation. --------X
 
 - Make Gateway.Devices return [] instead of null ------X
+
+- Make IPv4 validator class with static methods?
 
 - Should there be a message for incorrect devices status input when updating statuses?
 
@@ -26,10 +30,6 @@
 	
 - Use the gateway table uniqueness constraint to check if a gateway already exists during creation of new gateway to avoid calling 2 stored procedures. 
 If you try to add a gateway with a serial number which already exists the stored procedure fails with an error.
-
-- Move the Exceptions classes to the interfaces project. The exceptions should be independent from the implementation.
-
-- Remove dependancies to Gateways.Management and other implementations of interfaces from the API controllers that use the implementation. 
 The controllers should not be dependant of the implementation only the intrefaces.
 
 - Make the connection string a property of the DataAccess class instead of local var in each method.
