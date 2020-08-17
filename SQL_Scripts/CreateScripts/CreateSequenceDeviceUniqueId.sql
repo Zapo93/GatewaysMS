@@ -1,13 +1,12 @@
 USE [ms_gateways]
 GO
 
-/****** Object:  Sequence [dbo].[device_id]    Script Date: 8/14/2020 18:28:24 ******/
 CREATE SEQUENCE [dbo].[device_id] 
- AS [bigint]
+ AS [int]
  START WITH 0
  INCREMENT BY 1
- MINVALUE -9223372036854775808
- MAXVALUE 9223372036854775807
+ MINVALUE 	-2147483648
+ MAXVALUE 	2147483647
  CACHE 
 GO
 

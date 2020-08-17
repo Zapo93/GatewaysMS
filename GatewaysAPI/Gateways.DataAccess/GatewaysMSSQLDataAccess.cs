@@ -83,7 +83,7 @@ namespace Gateways.DataAccess
 
                 SqlParameter deviceIdOutputParameter = new SqlParameter();
                 deviceIdOutputParameter.ParameterName = "@DeviceId";
-                deviceIdOutputParameter.SqlDbType = SqlDbType.BigInt;
+                deviceIdOutputParameter.SqlDbType = SqlDbType.Int;
                 deviceIdOutputParameter.Direction = ParameterDirection.Output;
 
                 command.Parameters.Add(deviceIdOutputParameter);
@@ -93,7 +93,7 @@ namespace Gateways.DataAccess
                     await connection.OpenAsync();
                     await command.ExecuteNonQueryAsync();
 
-                    deviceId = (int)((long)deviceIdOutputParameter.Value);
+                    deviceId = (int)deviceIdOutputParameter.Value;
                 }
                 catch (Exception e)
                 {
@@ -262,7 +262,7 @@ namespace Gateways.DataAccess
             while (await reader.ReadAsync())
             {
                 var device = new DeviceSQLModel();
-                device.UniqueID = (int)reader.GetInt64(reader.GetOrdinal("id"));
+                device.UniqueID = reader.GetInt32(reader.GetOrdinal("id"));
                 device.GatewaySerialNumber = reader.GetString(reader.GetOrdinal("serial_number"));
                 device.Vendor = reader.GetString(reader.GetOrdinal("vendor"));
                 device.DateCreated = reader.GetDateTime(reader.GetOrdinal("date_created"));

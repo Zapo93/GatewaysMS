@@ -13,6 +13,3 @@ BEGIN
 	FROM dbo.device LEFT JOIN dbo.device_status ON device_status.device_id = device.id INNER JOIN dbo.gateway ON gateway.id = device.gateway_id;
 END
 GO
-
-DROP PROCEDURE get_all_gateways;
-GO

@@ -14,6 +14,3 @@ BEGIN
 	INSERT INTO dbo.gateway (serial_number, name, ipv4) VALUES (@SerialNumber, @Name, @IPv4);
 END
 GO
-
-DROP PROCEDURE dbo.add_gateway;
-GO

@@ -1,10 +1,6 @@
 USE [ms_gateways]
 GO
 
-SET ANSI_PADDING ON
-GO
-
-/****** Object:  Index [IX_gateway]    Script Date: 8/14/2020 18:22:18 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_gateway] ON [dbo].[gateway]
 (
 	[serial_number] ASC

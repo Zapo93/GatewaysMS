@@ -6,7 +6,7 @@ CREATE PROCEDURE dbo.add_device
 	@Vendor nvarchar(50),
 	@DateCreated datetime,
 	@Status nvarchar(50),
-	@DeviceId bigint OUTPUT
+	@DeviceId int OUTPUT
 AS
 BEGIN
 	DECLARE @GatewayId int;
@@ -25,6 +25,3 @@ BEGIN
 	INSERT INTO dbo.device_status(status,device_id) VALUES (@Status,@DeviceId);
 END
 GO
-
-DROP PROCEDURE dbo.add_device; 
-GO 

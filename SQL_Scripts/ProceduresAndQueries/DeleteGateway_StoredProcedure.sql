@@ -10,6 +10,3 @@ BEGIN
 	DELETE FROM dbo.gateway WHERE gateway.serial_number = @GatewaySerialNumber;
 END
 GO
-
-DROP PROCEDURE dbo.delete_gateway;
-GO

@@ -2,7 +2,7 @@ USE [ms_gateways]
 GO
 
 CREATE TABLE [dbo].[device](
-	[id] [bigint] NOT NULL,
+	[id] [int] NOT NULL,
 	[vendor] [nvarchar](50) NOT NULL,
 	[date_created] [datetime] NOT NULL,
 	[gateway_id] [int] NOT NULL,

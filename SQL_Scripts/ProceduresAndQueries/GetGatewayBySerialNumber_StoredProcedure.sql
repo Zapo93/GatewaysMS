@@ -6,7 +6,7 @@ CREATE PROCEDURE dbo.get_gateway
 AS
 BEGIN
 	SET NOCOUNT ON;
-	DECLARE @GatewayID bigint;
+	DECLARE @GatewayID int;
 
 	SET @GatewayID = (SELECT id 
 					FROM gateway
@@ -20,7 +20,4 @@ BEGIN
 	FROM device LEFT JOIN dbo.device_status ON device_status.device_id = device.id INNER JOIN dbo.gateway ON dbo.device.gateway_id = dbo.gateway.id
 	WHERE device.gateway_id = @GatewayID;
 END
-GO
-
-DROP PROCEDURE dbo.get_gateway;
 GO

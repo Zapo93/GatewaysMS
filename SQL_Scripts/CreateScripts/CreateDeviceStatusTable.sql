@@ -2,9 +2,9 @@ USE [ms_gateways]
 GO
 
 CREATE TABLE [dbo].[device_status](
-	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
 	[status] [nvarchar](50) NOT NULL,
-	[device_id] [bigint] NOT NULL,
+	[device_id] [int] NOT NULL,
  CONSTRAINT [PK_device_status] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
